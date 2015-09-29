@@ -1,18 +1,23 @@
 /*
 91.461 Assignment:  Creating Your First Web Page
 Khyteang Lim, Student, UMass Lowell Computer Science, khy_lim@student.uml.edu
-updated by KL on September 09, 2015 at 1:08 PM
-	
+updated by KL on September 22, 2015 at 1:08 PM
+    
 This web page contains personal information about Khyteang Lim.
 This is the Cascading Style Sheets for my personal page.
 */
 
 /*body customization*/
 body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poiret One', cursive;
 }
 
 #frontPage {
-    position: relative;    
+    position: relative;
+    margin: 0;
+    padding: 0;
 }
 
 #frontPage .headerImage {
@@ -20,7 +25,6 @@ body {
     background-attachment: fixed;
     background-position: center;
     width: 100%;
-    height: fill;
 }
 /*title banner class customization*/
 #frontPage .my-title-container {
@@ -55,8 +59,8 @@ body {
     text-decoration: none;
     color: white;
     padding: 1em 2em;
-	border: 1px white solid;
-	border-radius: 0px;
+    border: 1px white solid;
+    border-radius: 0px;
     overflow: hidden;
 
 }
@@ -73,14 +77,18 @@ body {
 /*customization for aboutMeSection*/
 #aboutMeSection {
     position: relative;
+    margin:0;
+    padding:0;
 }
 
+/*aboutMeSection background*/
 #aboutMeSection .headerImage {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
     width: 100%;
     height: 1020px;
+    margin-top: -10px;
 }
 
 #aboutMeSection .container {
@@ -127,17 +135,18 @@ body {
 } 
 
 /*customization for guiAssignmentSection*/
-
 #guiAssignmentSection {
     position: relative;
 }
 
+/*guiAssignmentSection background*/
 #guiAssignmentSection .headerImage {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
     width: 100%;
     height: 1020px;
+    margin-top: -10px;
 }
 
 #guiAssignmentSection .my-title-container {
@@ -170,7 +179,6 @@ body {
 } 
 
 /*customization for table in guiAssignmentSection*/
-
 #guiAssignmentSection .container table {
     width: 100%;
 }
@@ -195,17 +203,20 @@ body {
 }
 
 /*customization for hackathonProjectsSection*/
-
 #hackathonProjectsSection {
     position: relative;
+    margin: 0;
+    padding: 0;
 }
 
+/*hackathonProjectsSection background*/
 #hackathonProjectsSection .headerImage {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
     width: 100%;
     height: 1020px;
+    margin-top: -10px;
 }
 
 #hackathonProjectsSection .my-title-container {
