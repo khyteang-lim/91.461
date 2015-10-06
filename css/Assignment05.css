@@ -1,0 +1,72 @@
+/*
+    91.461 Assignment: Formatting Dynamic Text
+    Khyteang Lim, Student, UMass Lowell Computer Science, khy_lim@student.uml.edu
+    updated by KL on October 5, 2015 at 1:08 PM
+    
+    This website contains information regarding the Boston Celtics 2016 starting lineup.
+    This is the HTML for Boston Celtics 2016 starting lineup.
+*/
+
+/*body customization*/
+body {
+  background-image: url("..//images//basketballBackground.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: 100%;
+}
+
+/* styling the h1 in header which states the name of the team */
+#team {
+  color: green;
+  font-size: 85px;
+  float: right;
+  text-align: center;
+  overflow: hidden;
+  margin-top: 125px;
+  margin-right: 20px;
+}
+
+/* styling the celtics logo in header */
+#celticsLogo {
+  width: 25%;
+  height: 25%;
+}
+
+/* styling the individual player card template */
+.card {
+  width: 30%;
+  display: inline-block;
+  float: left;
+  margin-left: 30px;
+  margin-right: -10px;
+  margin-top: 30px;
+  border: 3px solid green;
+}
+
+.card .playersImg {
+  display: block;
+  margin: auto;
+}
+
+.card .number {
+  color: white;
+  font-size: 25pt;
+  font-weight: bold;
+  font-style: italic;
+  text-align: center;
+}
+
+.card .name {
+  color: white;
+  font-weight: bold;
+  font-size: 25pt;
+  text-align: center;
+}
+
+.card .position {
+  color: white;
+  font-weight: bold;
+  font-size: 25pt;
+  text-align: center;  
+}

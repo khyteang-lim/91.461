@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<!--head starts here-->
+	<head>
+		<meta charset=utf-8>
+		
+        <!--
+		    91.461 Assignment: Formatting Dynamic Text
+            Khyteang Lim, Student, UMass Lowell Computer Science, khy_lim@student.uml.edu
+            updated by KL on October 5, 2015 at 1:08 PM
+    
+            This website contains information regarding the Boston Celtics 2016 starting lineup.
+            This is the HTML for Boston Celtics 2016 starting lineup.
+		-->
+
+		<!--link CSS file-->
+		<link rel="stylesheet" type="text/css" href="css/Assignment05.css">
+		<link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet" type="text/css">	
+
+		<!--
+  		load jQuery library from the Google Content Delivery Network (CDN)
+  		or load local copy of jQuery library
+		-->
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script>if (!window.jQuery) { document.write('<script src="jquery.min.js"><\/script>'); }
+		</script>
+
+		<!-- load the JSON file containing the text of the Boston Celtics starting lineup -->
+		<script type="text/javascript">
+        var story;
+        jQuery.ajax({
+            async: false,
+            dataType: "json",
+            url: "celticsPlayers.json",
+            success: function( data ) {
+                story = data;
+            }
+        });
+
+        jQuery(document).ready( function() {
+            placeContent();
+        });
+    	</script>
+
+    	<!-- script to determine browser type and set first paragraph class appropriately -->
+	    <script type="text/javascript">
+	        var strFirstParaClass = "";
+	        var strNavString = navigator.userAgent;
+	        if (strNavString.indexOf("Firefox") !== -1) {
+	            strFirstParaClass = "Firefox";
+	        } else if (strNavString.indexOf("Chrome") !== -1) {
+	            strFirstParaClass = "Chrome";
+	        } else if (strNavString.indexOf("Safari") !== -1) {
+	            strFirstParaClass = "Safari";
+	        }
+	    </script>
+	  
+		<!-- script to place JSON text in the placeholder on this page -->
+		<script type="text/javascript">
+        // N.B.  This version *does* apply the CSS.
+        function placeContent() {
+            var strContent = "";
+
+            // create dynamic content from JSON
+            strContent += "<div id='celticsHeader'>";
+            strContent += "<img id='celticsLogo' src='" + story.logoImage + "'>"; 
+            strContent += "<h1 id='team'>" + story.Celtics + "</h1>";
+            strContent += "</div>";
+
+            // loop through all the starters and their information
+            for (var para = 0; para < story.starters.length; para++) {
+                strContent += "<div class=\"" + strFirstParaClass + "\">";
+                strContent += "<div class='card'>";
+                strContent += "<h1 class='number'> #" + story.starters[para][3] + "</p>";
+                strContent += "<img class='playersImg' src=\"" + story.starters[para][4] + "\">"; 
+                strContent += "<h1 class='name'>" + story.starters[para][0] + ", " + story.starters[para][1] + "</p>";
+                strContent += "<h1 class='position'>" + story.starters[para][2] + "</p>";
+                strContent += "</div>";
+                strContent += "</div>";
+            }
+
+            // place dynamic content on page
+            jQuery("#content").html(strContent);
+        }
+    	</script>
+
+        <!-- page title -->
+		<title>Boston Celtics | Starting Lineup | 2016-2017</title>
+		
+	</head>
+	
+	<!--body starts here-->
+	<body>
+		<!-- dynamic content -->
+		<div id="content"></div>
+        <p>
+            <a href="http://jigsaw.w3.org/css-validator/check/referer">
+                <img style="border:0;width:88px;height:31px"
+                src="http://jigsaw.w3.org/css-validator/images/vcss-blue"
+                alt="Valid CSS!" />
+            </a>
+        </p>
+     
+	</body>
+
+</html>

@@ -1,0 +1,45 @@
+{   "Celtics": "The Boston Celtics",
+    "celticsBackground": "images//celticsBackground.jpg",
+    "logoImage": "images//celtics.png",
+    "starters": [
+        [
+            "Bradley",
+            "Avery",
+            "Guard",
+            0,
+            "images//avery.png"
+        ],
+        [
+            "Crowder",
+            "Jae",
+            "Forward",
+            99,
+            "images//jae.png" 
+            
+        ],
+        [
+            "Olynyk",
+            "Kelly",
+            "Center-Forward",
+            41,
+            "images//kelly.png"
+            
+        ],
+        [
+            "Smart",
+            "Marcus",
+            "Point-Guard",
+            36,
+            "images//marcus.png"
+            
+        ],
+        [
+            "Lee",
+            "David",
+            "Power-Forward",
+            42,
+            "images//david.png"
+            
+        ]
+    ]
+}
