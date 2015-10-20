@@ -1,0 +1,66 @@
+/*
+    91.461 Assignment: Formatting Dynamic Text
+    Khyteang Lim, Student, UMass Lowell Computer Science, khy_lim@student.uml.edu
+    updated by KL on October 18, 2015 at 11:28 PM
+     
+    This website allows user to dynamically generate a multiplication table.
+*/
+
+/*body customization*/
+body{
+	color: white;
+	background-color: black;
+	background-image: url("..//images//assignment06background.jpg");
+	background-repeat: no-repeat;
+	background-size: 100%;
+	background-attachment: fixed;
+    background-position: 50px 150px;
+
+}
+/*title customization*/
+.titleHeading{
+	font-size: 30px;
+	text-align: center;
+}
+
+/*table customization*/
+td{
+	color: black;
+    border:1px solid black;
+    width:60px;
+    text-align:center;
+    background:#dde;
+    font-size: 20pt;
+}
+
+/*customize td by nth-child*/
+td:nth-child(n){
+	background: #FF0000;
+}
+td:nth-child(2n){
+	background: #FF99FF;
+}
+td:nth-child(3n){
+	background: #00FFFF;
+}
+td:nth-child(4n){
+	background: #FF8000;
+}
+
+/*custom colors*/
+.yellow{
+	background: yellow;
+}
+
+.blue{
+	background: blue !important;
+}
+
+/*custom top row and left column to show multiplier and multiplicand*/
+.topHeading{
+	background: yellow !important;
+}
+
+.leftHeading{
+	background: yellow !important;
+}

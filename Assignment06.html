@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+	<!--head starts here-->
+	<head>
+		<meta charset=utf-8>
+		
+        <!--
+		    91.461 Assignment: Formatting Dynamic Text
+            Khyteang Lim, Student, UMass Lowell Computer Science, khy_lim@student.uml.edu
+            updated by KL on October 18, 2015 at 11:28 PM
+    
+            This website allows user to dynamically generate a multiplication table.
+		-->
+
+		<!--link CSS file-->
+		<link rel="stylesheet" type="text/css" href="css/Assignment06.css">
+		<link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet" type="text/css">	
+
+        <!--
+        load jQuery library from the Google Content Delivery Network (CDN)
+        or load local copy of jQuery library
+        -->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script>if (!window.jQuery) { document.write('<script src="jquery.min.js"><\/script>'); }
+        </script>
+
+        <script>
+         /*This is based of the following source but the code was modified to fit with the problem
+        http://stackoverflow.com/questions/26004342/javascript-multiplication-table*/
+        $(document).ready(function(){
+            genTable();
+            $('form').on('submit',function(e){
+                e.preventDefault();
+                genTable();
+            });
+        });
+
+        /*This function is based of the following source but the function was modified to fit with the problem
+        http://stackoverflow.com/questions/26004342/javascript-multiplication-table*/
+        function genTable(){
+            var topMin = parseInt($('input[name=numberOne]').val());
+            var topMax = parseInt($('input[name=numberTwo]').val());
+            var leftMin = parseInt($('input[name=numberThree]').val());
+            var leftMax = parseInt($('input[name=numberFour]').val());
+            var col;      
+
+            /*check to see that topMin and topMax are in correct order*/
+            if ( topMax < topMin ) {
+                var temp = topMin; 
+                topMin = topMax;
+                topMax = temp;
+            }
+
+            /*check to see that leftMin and leftMax are in correct order*/
+            if ( leftMax < leftMin ) {
+                var temp = leftMin;
+                leftMin = leftMax;
+                leftMax = temp;
+            }
+
+            /*check to see that topMin, topMax, leftMin, and leftMax have type 'number'*/
+            if(typeof topMin === 'number' && typeof topMax === 'number' && typeof leftMin === 'number' && typeof leftMax === 'number'){
+
+                var table = '<table>';                    
+                table = '<tr>' + '<td class="topHeading">x</td>';
+                
+                /*place top row*/
+                for(var x = topMin; x <= topMax; x++){
+                    table += '<td class="topHeading">'+x+'</td>';
+                }
+                col = leftMin;
+                /*start inserting table*/
+                for(var i = leftMin; i <= leftMax; i++){
+                    table += '<tr>';
+                    /*insert left column*/
+                    table += '<td class="leftHeading">'+col+'</td>'; 
+                    for(var j = topMin; j <= topMax; j++){
+                        if ( i == j ){
+                            table += '<td class="blue">'+i*j+'</td>';
+                        } else {
+                            table += '<td>'+i*j+'</td>';
+                        }
+                    }
+                    table += '</tr>';
+                    col++;
+                }
+                table += '</table>';
+                $('#table').html(table);
+            } 
+        }
+        </script>
+
+        <!-- page title -->
+		<title>Assignment 06</title>
+		
+	</head>
+	
+	<!--body starts here-->
+	<body>
+		<!-- dynamic content -->
+		<div id="content"></div>
+        <h1 id="titleHeading">Generate Multiplication Table</h1>
+
+        <!--form that asks for user's inputs-->
+        <form> 
+            Top Min:
+            <input type="text" value="1" size="6" name="numberOne" />
+            Top Max:
+            <input type="text" value="10" size="6" name="numberTwo" />
+            Left Min:
+            <input type="text" value="1" size="6" name="numberThree" />
+            Left Max:
+            <input type="text" value="10" size="6" name="numberFour" />
+            <input type="submit" value="Generate Table" />
+        </form>
+
+        <br>
+        <!--multiplication table-->
+        <div id="table"></div>
+
+        <!-- css validation
+        <p style="position:absolute; margin-top: 90%;"> 
+            <a href="http://jigsaw.w3.org/css-validator/check/referer">
+            <img style="border:0;width:88px;height:31px"
+            src="http://jigsaw.w3.org/css-validator/images/vcss-blue"
+            alt="Valid CSS!" />
+            </a>
+        </p> -->
+	</body>
+
+</html>
