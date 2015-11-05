@@ -1,0 +1,95 @@
+/*
+    91.461 Assignment: Using the jQuery Validation Plugin with Your Dynamic Table
+    Khyteang Lim, Student, UMass Lowell Computer Science, khy_lim@student.uml.edu
+    updated by KL on October 18, 2015 at 11:28 PM
+    updated by KL on November 05, 2015 at 10:28 PM
+     
+    This website allows user to dynamically generate a multiplication table.
+    In additional, there will be errors shown to users if the inputs are invalid.
+*/
+
+/*body customization*/
+body{
+	color: white;
+	background-color: black;
+	background-image: url("..//images//assignment06background.jpg");
+	background-repeat: no-repeat;
+	background-size: 100%;
+	background-attachment: fixed;
+    background-position: 50px 150px;
+
+}
+/*title customization*/
+.titleHeading{
+	font-size: 30px;
+	text-align: center;
+}
+
+/*table customization*/
+td{
+	color: black;
+    border:1px solid black;
+    width:60px;
+    text-align:center;
+    background:#dde;
+    font-size: 20pt;
+}
+
+/*customize td by nth-child*/
+td:nth-child(n){
+	background: #FF0000;
+}
+td:nth-child(2n){
+	background: #FF99FF;
+}
+td:nth-child(3n){
+	background: #00FFFF;
+}
+td:nth-child(4n){
+	background: #FF8000;
+}
+
+/*custom colors*/
+.yellow{
+	background: yellow;
+}
+
+.blue{
+	background: blue !important;
+}
+
+/*custom top row and left column to show multiplier and multiplicand*/
+.topHeading{
+	background: yellow !important;
+}
+
+.leftHeading{
+	background: yellow !important;
+}
+
+.marginAdd {
+	margin-bottom: 20px;
+	margin-right: 50px;
+}
+
+/*class name 'error' which will style the label and input field when an error occurs*/
+.error {
+	border:3px solid red !important;
+	background-color: rgba(255,0,0,0.9);
+}
+
+/*styling the label error field*/
+label.error{
+	color: red;
+	font-weight: bold;
+	border:0px solid red !important;	
+	background-color: rgba(0,0,0,1);
+}
+
+/*styling the status*/
+#status {
+	color: green;
+	font-weight: bold;
+	font-size: 14pt; 
+}
+

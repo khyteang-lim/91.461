@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+	<!--head starts here-->
+	<head>
+		<meta charset=utf-8>
+		
+        <!--
+		    91.461 Assignment: Formatting Dynamic Text
+            Khyteang Lim, Student, UMass Lowell Computer Science, khy_lim@student.uml.edu
+            updated by KL on October 18, 2015 at 11:28 PM
+            updated by KL on November 05, 2015 at 10:15 AM
+
+            This website allows user to dynamically generate a multiplication table.
+            In additional, there will be errors shown to users if the inputs are invalid.
+		-->
+
+		<!--link CSS file-->
+		<link rel="stylesheet" type="text/css" href="css/Assignment07.css">
+		<link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet" type="text/css">	
+
+        <!--
+        load jQuery library from the Google Content Delivery Network (CDN)
+        or load local copy of jQuery library
+        -->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script>if (!window.jQuery) { document.write('<script src="jquery.min.js"><\/script>'); }
+        </script>
+        <!--load jquery.validate.min.js-->
+		<script src="jquery.validate.min.js"></script>
+        
+        <script>
+         /*This is based of the following source but the code was modified to fit with the problem
+        http://stackoverflow.com/questions/26004342/javascript-multiplication-table*/
+        $(document).ready(function(){
+            genTable();
+            $('#userInput').validate({
+                //error rules
+                rules: {
+                	numberOne: {
+                		required: true,
+                		digits: true
+                	},
+                	numberTwo: {
+                		required: true,
+                		digits: true
+                	},
+                	numberThree: {
+                		required: true,
+                		digits: true
+                	},
+                	numberFour: {
+                		required: true,
+                		digits: true
+                	}
+                },
+                //error messages for when there are errors
+	            messages: {
+	               	numberOne: {
+	               		required: " Please input a value for Top Min",
+	               		digits: " Please input an integer"
+	               	},
+	               	numberTwo: {
+	               		required: " Please input a value for Top Max",
+	               		digits: " Please input an integer"
+	               	},
+	               	numberThree: {
+	               		required: " Please input a value for Left Min",
+	               		digits: " Please input an integer"
+	               	},
+	               	numberFour: {
+	               		required: " Please input a value for Left Max",
+	               		digits: " Please input an integer"
+	                }
+				}
+            });
+
+            $('form').on('submit',function(e){
+                e.preventDefault();
+                var cue = $('#userInput').validate({
+                	//error rules
+                    rules: {
+                		numberOne: {
+                			required: true,
+                			digits: true
+                		},
+                		numberTwo: {
+                			required: true,
+                			digits: true
+                		},
+                		numberThree: {
+                			required: true,
+                			digits: true
+                		},
+                		numberFour: {
+                			required: true,
+                			digits: true
+                		}
+                	},
+                    //error messages for when there are errors
+	                messages: {
+	                	numberOne: {
+	                		required: " Please input a value for Top Min",
+	                		digits: " Please input an integer for Top Min"
+	                	},
+	                	numberTwo: {
+	                		required: " Please input a value for Top Max",
+	                		digits: " Please input an integer for Top Max"
+	                	},
+	                	numberThree: {
+	                		required: " Please input a value for Left Min",
+	                		digits: " Please input an integer for Left Min"
+	                	},
+	                	numberFour: {
+	                		required: " Please input a value for Left Max",
+	                		digits: " Please input an integer for Left Max"
+	                	}
+					}
+                });
+                cue = cue.currentForm;
+                
+                /*This code will check to see if an error exist, if so, 
+                  focus on where the error is located to the user.
+                  Update the status                                     */
+
+                if( cue[0].className != 'error' && cue[1].className != 'error' && cue[2].className != 'error' && cue[3].className != 'error' ) {
+                    genTable();
+                } else { 
+                    if (cue[0].className == 'error'){
+                        document.getElementById("numberOne").focus();
+                    }
+                    if (cue[1].className == 'error'){
+                        document.getElementById("numberTwo").focus();
+                    }
+                    if (cue[2].className == 'error'){
+                        document.getElementById("numberThree").focus();
+                    }
+                    if (cue[3].className == 'error'){
+                        document.getElementById("numberFour").focus();
+                    }
+                    $("#status").html("Invalid Input(s)");
+                }
+            });
+            
+        });
+
+        /*This function is based of the following source but the function was modified to fit with the problem
+        http://stackoverflow.com/questions/26004342/javascript-multiplication-table*/
+        function genTable(){
+            var topMin = parseInt($('input[name=numberOne]').val());
+            var topMax = parseInt($('input[name=numberTwo]').val());
+            var leftMin = parseInt($('input[name=numberThree]').val());
+            var leftMax = parseInt($('input[name=numberFour]').val());
+            var col;   
+            var Switch = 0;   
+
+            /*check to see that topMin and topMax are in correct order*/
+            if ( topMax < topMin ) {
+                var temp = topMin; 
+                topMin = topMax;
+                topMax = temp;
+                Switch = 1;
+                document.getElementById('numberOne').value = topMin;
+                document.getElementById('numberTwo').value = topMax;
+			}
+
+            /*check to see that leftMin and leftMax are in correct order*/
+            if ( leftMax < leftMin ) {
+                var temp = leftMin;
+                leftMin = leftMax;
+                leftMax = temp;
+                document.getElementById('numberThree').value = leftMin;
+                document.getElementById('numberFour').value = leftMax;
+                if (Switch == 1){
+               		Switch = 3;
+                } else {
+                    Switch = 2;
+                }
+            }
+
+            /*check to see that topMin, topMax, leftMin, and leftMax have type 'number'*/
+            if(typeof topMin === 'number' && typeof topMax === 'number' && typeof leftMin === 'number' && typeof leftMax === 'number'){
+
+                var table = '<table>';                    
+                table = '<tr>' + '<td class="topHeading">x</td>';
+                
+                /*place top row*/
+                for(var x = topMin; x <= topMax; x++){
+                    table += '<td class="topHeading">'+x+'</td>';
+                }
+                col = leftMin;
+                /*start inserting table*/
+                for(var i = leftMin; i <= leftMax; i++){
+                    table += '<tr>';
+                    /*insert left column*/
+                    table += '<td class="leftHeading">'+col+'</td>'; 
+                    for(var j = topMin; j <= topMax; j++){
+                        if ( i == j ){
+                            table += '<td class="blue">'+i*j+'</td>';
+                        } else {
+                            table += '<td>'+i*j+'</td>';
+                        }
+                    }
+                    table += '</tr>';
+                    col++;
+                }
+                table += '</table>';
+                $('#table').html(table);
+
+                if(Switch == 1){
+                	$("#status").html("Top Min value and Top Max value Switched");
+                	Switch = 0;
+                } else if (Switch == 2){
+                	$("#status").html("Left Min value and Left Max value Switched");
+                	Switch = 0;
+                } else if (Switch == 3){
+					$("#status").html("Top Min value and Top Max value Switched | Left Min value and Left Max value Switched");
+                	Switch = 0;
+                } else {
+                    $("#status").html("Valid Inputs");
+                }
+            } 
+        }
+        </script>
+
+        <!-- page title -->
+		<title>Assignment 07</title>
+		
+	</head>
+	
+	<!--body starts here-->
+	<body>
+		<!-- dynamic content -->
+		<div id="content"></div>
+        <h1 id="titleHeading">Generate Multiplication Table</h1>
+
+        <!--form that asks for user's inputs-->
+        <form id="userInput"> 
+        	<div id= "numberOneDiv" class="marginAdd">
+            Top Min:
+            <input type="text" id="numberOne" value="1" size="6" name="numberOne"/>
+            </div>
+            <div class="marginAdd">
+            Top Max:
+            <input type="text" id="numberTwo" value="10" size="6" name="numberTwo"/>
+            </div>
+            <div class="marginAdd">
+            Left Min:
+            <input type="text" id="numberThree" value="1" size="6" name="numberThree"/>
+            </div>
+            <div class="marginAdd">
+            Left Max:
+            <input type="text" id="numberFour" value="10" size="6" name="numberFour"/>
+            </div>
+            <input type="submit" value="Generate Table"/>
+        </form>
+        <br>
+        <!-- label for status to show user -->
+       	<label id="status">Valid Inputs</label>
+        <br>
+        <br>
+        <!--multiplication table-->
+        <div id="table"></div>
+
+        <!-- css validation
+        <p style="position:absolute; margin-top: 90%;"> 
+            <a href="http://jigsaw.w3.org/css-validator/check/referer">
+            <img style="border:0;width:88px;height:31px"
+            src="http://jigsaw.w3.org/css-validator/images/vcss-blue"
+            alt="Valid CSS!" />
+            </a>
+        </p> -->
+	</body>
+
+</html>
