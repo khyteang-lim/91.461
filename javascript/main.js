@@ -169,8 +169,54 @@ Update the status                                     */
 	tabs.delegate( "span.ui-icon-close", "click", function() {
       var panelId = $( this ).closest( "li" ).remove().attr( "aria-controls" );
       $( "#" + panelId ).remove();
+      $("#ch-" + panelId.replace(/\D/g, '')).remove();
+      $("#lb-" + panelId.replace(/\D/g, '')).remove();
+            
+      console.log(panelId);
       tabs.tabs( "refresh" );
     });
+
+    $('#delete').click(function () {
+        /* Store id of checked checkbox to an array then loop through.
+           If check box is checked, delete checkbox, label, table and tab.
+            /* This code will delete the first tab and tabs
+            $('#tabs > ul > li').remove();
+            $('#tabs > #tab-1').remove();
+            $("input[type='checkbox']:checked").remove();
+            $("label").remove();
+            ***********************************************/
+        var selected = [];
+        $('input:checkbox:checked').each(function () {
+            selected.push($(this).attr('id'));
+        });
+        /* Set active tab to unchecked checkbox.
+        Not exactly sure why this doesn't work.
+        $('#tabs').tabs("refresh");
+        $("#tabs").tabs("option", "active", $('input:checkbox').attr('checked',false).val());
+        ***********************************************************************************/
+        // Remove all checked checkbox that matched elements in array selected.
+        for (var m = 0; m < selected.length; m++) {
+            $("#ch-" + selected[m].replace(/\D/g, '')).remove();
+            $("#lb-" + selected[m].replace(/\D/g, '')).remove();
+            $('#ui-id-' + selected[m].replace(/\D/g, '')).remove();
+            $("#tabs-" + selected[m].replace(/\D/g, '')).remove();
+            $("li[aria-controls='tabs-" + selected[m].replace(/\D/g, '') +"']").remove();            
+            $('#tabs').tabs("option", "active", $("input:checkbox:not(:checked)"));
+        }
+        $('#tabs').tabs("refresh");
+    });
+
+    $("#deleteAll").click( function() {
+    	$('input:checkbox').each(function(){
+    		$("#ch-" + ($(this).attr('id')).replace(/\D/g, '')).remove();
+            $("#lb-" + ($(this).attr('id')).replace(/\D/g, '')).remove();
+            $('#ui-id-' + ($(this).attr('id')).replace(/\D/g, '')).remove();
+            $("#tabs-" + ($(this).attr('id')).replace(/\D/g, '')).remove();
+            $("li[aria-controls='tabs-" + ($(this).attr('id')).replace(/\D/g, '') +"']").remove();            
+            $('#tabs').tabs("option", "active", $("input:checkbox:not(:checked)"));
+    	});
+    });
+
 });
 /*This function is based of the following source but the function was modified to fit with the problem
 http://stackoverflow.com/questions/26004342/javascript-multiplication-table*/
@@ -264,5 +310,30 @@ function genTable() {
             active: num_tabs - 1
         });
         $('#tabs-' + num_tabs).css("overflow", "auto");
+        createCheckBox(num_tabs, topMin, topMax, leftMin, leftMax);
     }
 }
+
+function createCheckBox(index_tabs, topMin, topMax, leftMin, leftMax) {
+        var div = document.createElement("div");
+        var checkbox = document.createElement("input");
+        // Set multiples key value pair for setAttribute.
+        //checkbox.setAttribute("type", "checkbox");
+        //checkbox.setAttribute("name", "ch-" + index_tabs);
+        //checkbox.setAttribute("id", "ch-" + index_tabs);
+		        
+        checkbox.type = "checkbox";
+        checkbox.name = "ch-" + index_tabs;
+        checkbox.id = "ch-" + index_tabs;
+        var label = document.createElement("label");
+        // label.setAttribute("for", "tab-" + index_tabs);
+        label.htmlFor = "ch-" + index_tabs;
+        label.id = "lb-" + index_tabs;
+        label.appendChild(document.createTextNode("Top [" + topMin + " : " + topMax + "] | Left [" + leftMin + " : " + leftMax + "]"));
+        // Append checkbox to checkbox div.
+   		div.appendChild(checkbox);
+   		div.appendChild(label);
+        document.getElementById('check').appendChild(div);
+        //document.getElementById('check').appendChild(label);
+}
+
