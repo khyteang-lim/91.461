@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<!--head starts here-->
+	<head>
+		<meta charset=utf-8>
+		
+		<!--
+				91.461 Assignment: Formatting Dynamic Text
+		Khyteang Lim, Student, UMass Lowell Computer Science, khy_lim@student.uml.edu
+		updated by KL on October 18, 2015 at 11:28 PM
+		updated by KL on November 05, 2015 at 10:15 AM
+		This website allows user to dynamically generate a multiplication table.
+		In additional, there will be errors shown to users if the inputs are invalid.
+		-->
+		<!--link CSS file-->
+		<link rel="stylesheet" type="text/css" href="css/Assignment07.css">
+		<link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet" type="text/css">
+		<!--
+		load jQuery library from the Google Content Delivery Network (CDN)
+		or load local copy of jQuery library
+		-->
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script>if (!window.jQuery) { document.write('<script src="javascript/jquery.min.js"><\/script>'); }
+		</script>
+		<!--load jquery.validate.min.js-->
+		<script src="javascript/jquery.validate.min.js"></script>
+		
+		<link rel="stylesheet" href="css/jquery-ui.min.css">
+		<script src="javascript/jquery-ui.min.js"></script>
+		<script src="javascript/main.js"></script>
+		<!-- page title -->
+		<title>Assignment 07</title>
+		
+	</head>
+	
+	<!--body starts here-->
+	<body>
+		<!-- dynamic content -->
+		<div id="content"></div>
+		<h1 id="titleHeading">Generate Multiplication Table</h1>
+		<!--form that asks for user's inputs-->
+		<!--multiplication table-->
+		<div id="tabs">
+			<ul id="tabTable" style="overflow:auto; width: 99%;">
+				<li><a href="#parameterTab">Parameter Tab</a></li>
+				<!--<li><a href="#tabs-1">Nunc tincidunt</a></li>-->
+			</ul>
+			<div id="parameterTab">
+				<form id="userInput">
+					<div id= "numberOneDiv" class="marginAdd">
+						Top Min:
+						<input type="text" id="numberOne" value="1" size="6" name="numberOne"/>
+						<div id="sliderMinTop" style="top: 7px;"></div>
+					</div>
+					<div class="marginAdd">
+						Top Max:
+						<input type="text" id="numberTwo" value="10" size="6" name="numberTwo"/>
+						<div id="sliderMaxTop" style="top: 7px;"></div>
+					</div>
+					<div class="marginAdd">
+						Left Min:
+						<input type="text" id="numberThree" value="1" size="6" name="numberThree"/>
+						<div id="sliderMinLeft" style="top: 7px;"></div>
+					</div>
+					<div class="marginAdd">
+						Left Max:
+						<input type="text" id="numberFour" value="10" size="6" name="numberFour"/>
+						<div id="sliderMaxLeft" style="top: 7px;"></div>
+					</div>
+					<input type="submit" value="Generate Table"/>
+				</form>
+				<br>
+				<!-- label for status to show user -->
+				<label id="status">Valid Inputs</label>
+				<br>
+				<br>
+			</div>
+			
+		</div>
+		
+		<!-- css validation -->
+		<p style="position:absolute; margin-top: 5%;">
+			<a href="http://jigsaw.w3.org/css-validator/check/referer">
+				<img style="border:0;width:88px;height:31px"
+				src="http://jigsaw.w3.org/css-validator/images/vcss-blue"
+				alt="Valid CSS!" />
+			</a>
+		</p>
+	</body>
+</html>
