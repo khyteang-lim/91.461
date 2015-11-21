@@ -1,8 +1,9 @@
 /*
-    91.461 Assignment: Using the jQuery Validation Plugin with Your Dynamic Table
+	91.461 Assignment: Using the jQuery UI Slider and Tab Widgets
     Khyteang Lim, Student, UMass Lowell Computer Science, khy_lim@student.uml.edu
     updated by KL on October 18, 2015 at 11:28 PM
     updated by KL on November 05, 2015 at 10:28 PM
+    updated by KL on November 18, 2015 at 7:28 PM
      
     This website allows user to dynamically generate a multiplication table.
     In additional, there will be errors shown to users if the inputs are invalid.
@@ -94,9 +95,13 @@ label.error{
 	margin-bottom: 30pt;
 }
 
+/*styling dialog label*/
 #dialog label, #dialog input { display:block; }
 #dialog label { margin-top: 0.5em; }
 #dialog input, #dialog textarea { width: 95%; }
+
+/*styling tabs*/
 #tabs { margin-top: 1em; }
 #tabs li .ui-icon-close { float: left; margin: 0.4em 0.2em 0 0; cursor: pointer; }
+
 #add_tab { cursor: pointer; }

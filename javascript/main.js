@@ -1,3 +1,11 @@
+/*
+		91.461 Assignment: Using the jQuery UI Slider and Tab Widgets
+		Khyteang Lim, Student, UMass Lowell Computer Science, khy_lim@student.uml.edu
+		updated by KL on November 18, 2015 at 7:35 AM
+		This website allows user to dynamically generate a multiplication table.
+		In additional, there will be errors shown to users if the inputs are invalid.
+*/
+
 var firstTable = true;
 /*This is based of the following source but the code was modified to fit with the problem
 http://stackoverflow.com/questions/26004342/javascript-multiplication-table*/
@@ -9,6 +17,7 @@ $(document).ready(function() {
         return this.optional(element) || parseInt(value) > param;
     }, jQuery.validator.format("Please input an integer greater than -1000"));
     var tabs = $("#tabs").tabs();
+    //setting up sliders
     var sliderMinTop = $("#sliderMinTop").slider({
         min: -99,
         max: 99,
@@ -166,6 +175,7 @@ Update the status                                     */
         }
     });
 
+	//click to delete tab
 	tabs.delegate( "span.ui-icon-close", "click", function() {
       var panelId = $( this ).closest( "li" ).remove().attr( "aria-controls" );
       $( "#" + panelId ).remove();
@@ -176,24 +186,12 @@ Update the status                                     */
       tabs.tabs( "refresh" );
     });
 
+	//click the delete button can delete multiple tabs
     $('#delete').click(function () {
-        /* Store id of checked checkbox to an array then loop through.
-           If check box is checked, delete checkbox, label, table and tab.
-            /* This code will delete the first tab and tabs
-            $('#tabs > ul > li').remove();
-            $('#tabs > #tab-1').remove();
-            $("input[type='checkbox']:checked").remove();
-            $("label").remove();
-            ***********************************************/
         var selected = [];
         $('input:checkbox:checked').each(function () {
             selected.push($(this).attr('id'));
         });
-        /* Set active tab to unchecked checkbox.
-        Not exactly sure why this doesn't work.
-        $('#tabs').tabs("refresh");
-        $("#tabs").tabs("option", "active", $('input:checkbox').attr('checked',false).val());
-        ***********************************************************************************/
         // Remove all checked checkbox that matched elements in array selected.
         for (var m = 0; m < selected.length; m++) {
             $("#ch-" + selected[m].replace(/\D/g, '')).remove();
@@ -206,6 +204,7 @@ Update the status                                     */
         $('#tabs').tabs("refresh");
     });
 
+    //click delete all will delete all tabs
     $("#deleteAll").click( function() {
     	$('input:checkbox').each(function(){
     		$("#ch-" + ($(this).attr('id')).replace(/\D/g, '')).remove();
@@ -218,6 +217,7 @@ Update the status                                     */
     });
 
 });
+
 /*This function is based of the following source but the function was modified to fit with the problem
 http://stackoverflow.com/questions/26004342/javascript-multiplication-table*/
 function genTable() {
@@ -294,6 +294,7 @@ function genTable() {
         } else {
             $("#status").html("Valid Inputs");
         }
+        //dynamically changing the value of the sliders
         $("#sliderMinTop").slider({
             value: topMin
         });
@@ -314,19 +315,14 @@ function genTable() {
     }
 }
 
+//function for creating checkbox for each tab created
 function createCheckBox(index_tabs, topMin, topMax, leftMin, leftMax) {
         var div = document.createElement("div");
         var checkbox = document.createElement("input");
-        // Set multiples key value pair for setAttribute.
-        //checkbox.setAttribute("type", "checkbox");
-        //checkbox.setAttribute("name", "ch-" + index_tabs);
-        //checkbox.setAttribute("id", "ch-" + index_tabs);
-		        
         checkbox.type = "checkbox";
         checkbox.name = "ch-" + index_tabs;
         checkbox.id = "ch-" + index_tabs;
         var label = document.createElement("label");
-        // label.setAttribute("for", "tab-" + index_tabs);
         label.htmlFor = "ch-" + index_tabs;
         label.id = "lb-" + index_tabs;
         label.appendChild(document.createTextNode("Top [" + topMin + " : " + topMax + "] | Left [" + leftMin + " : " + leftMax + "]"));
@@ -334,6 +330,5 @@ function createCheckBox(index_tabs, topMin, topMax, leftMin, leftMax) {
    		div.appendChild(checkbox);
    		div.appendChild(label);
         document.getElementById('check').appendChild(div);
-        //document.getElementById('check').appendChild(label);
 }
 

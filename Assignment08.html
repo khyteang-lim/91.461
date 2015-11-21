@@ -5,10 +5,11 @@
 		<meta charset=utf-8>
 		
 		<!--
-				91.461 Assignment: Formatting Dynamic Text
+		91.461 Assignment: Using the jQuery UI Slider and Tab Widgets
 		Khyteang Lim, Student, UMass Lowell Computer Science, khy_lim@student.uml.edu
 		updated by KL on October 18, 2015 at 11:28 PM
 		updated by KL on November 05, 2015 at 10:15 AM
+		updated by KL on November 18, 2015 at 7:35 AM
 		This website allows user to dynamically generate a multiplication table.
 		In additional, there will be errors shown to users if the inputs are invalid.
 		-->
@@ -24,9 +25,10 @@
 		</script>
 		<!--load jquery.validate.min.js-->
 		<script src="javascript/jquery.validate.min.js"></script>
-		
+		<!--load jquery.ui.min.js-->		
 		<link rel="stylesheet" href="css/jquery-ui.min.css">
 		<script src="javascript/jquery-ui.min.js"></script>
+		<!--load custom javascript main.js-->
 		<script src="javascript/main.js"></script>
 		<!-- page title -->
 		<title>Assignment 07</title>
@@ -38,12 +40,11 @@
 		<!-- dynamic content -->
 		<div id="content"></div>
 		<h1 id="titleHeading">Generate Multiplication Table</h1>
-		<!--form that asks for user's inputs-->
+		<!--form that asks for user's inputs (textbooks and sliders)-->
 		<!--multiplication table-->
 		<div id="tabs">
 			<ul id="tabTable" style="overflow:auto; width: 99%;">
 				<li><a href="#parameterTab">Parameter Tab</a></li>
-				<!--<li><a href="#tabs-1">Nunc tincidunt</a></li>-->
 			</ul>
 			<div id="parameterTab">
 				<form id="userInput">
@@ -72,6 +73,7 @@
 				<br>
 				<!-- label for status to show user -->
 				<label id="status">Valid Inputs</label>
+				<!-- buttons that allow user to delete multiple tabs -->
 				<div id="deleteArea" style="margin-top: 20px;">
 					<input type="button" value="Delete" id="delete">
 					<input type="button" value="Delete All Tabs" id="deleteAll">
