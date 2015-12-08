@@ -12,10 +12,10 @@ http://stackoverflow.com/questions/26004342/javascript-multiplication-table*/
 $(document).ready(function() {
     $.validator.addMethod('greaterThan', function(value, element, param) {
         return this.optional(element) || (parseInt(value) < param);
-    }, jQuery.validator.format("Please input an integer less than 1000"));
+    }, jQuery.validator.format("Please input an integer less than 100"));
     $.validator.addMethod("lessThan", function(value, element, param) {
         return this.optional(element) || parseInt(value) > param;
-    }, jQuery.validator.format("Please input an integer greater than -1000"));
+    }, jQuery.validator.format("Please input an integer greater than -100"));
     var tabs = $("#tabs").tabs();
     //setting up sliders
     var sliderMinTop = $("#sliderMinTop").slider({
