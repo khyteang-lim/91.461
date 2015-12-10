@@ -1,12 +1,13 @@
 /*
-	91.461 Assignment: Using the jQuery UI Slider and Tab Widgets
+	91.461 Assignment 9: Implementing a Bit of Scrabble with Drag-and-Drop
     Khyteang Lim, Student, UMass Lowell Computer Science, khy_lim@student.uml.edu
-    updated by KL on October 18, 2015 at 11:28 PM
-    updated by KL on November 05, 2015 at 10:28 PM
-    updated by KL on November 18, 2015 at 7:28 PM
+    updated by KL on December 9, 2015 at 11:28 PM
      
-    This website allows user to dynamically generate a multiplication table.
-    In additional, there will be errors shown to users if the inputs are invalid.
+    This is a game of scrabble.
+    This is the css file for assignment09 (implementing a bit of Scrabble)
+
+	File: Assignment09.css
+	http://weblab.cs.uml.edu/~klim/Assignment09.html
 */
 
 /*body customization*/
@@ -25,24 +26,29 @@ body{
 	text-align: center;
 }
 
-/*scrabble board*/
+/*scrabble board game area*/
 .gameArea {
 	float: left;
 	clear: both;
 }
 
+/*scrabble board*/
 .scrabbleBoard {
 	background-color: rgb(0,0,0);
     position: absolute;
 }
 
+/*rack area*/
 .rackTiles {
     position: absolute;
 }
 
+/*draggable customization*/
 .draggable { width: 50px; height: 50px; left: auto; top: auto; position: relative;}
 .ui-widget-header p, .ui-widget-content p { margin: 0; }
 
+/*bonus tiles customization
+All tiles images were created by Jason Downing*/
 .tripleWord {
 	width: 50px;
 	height: 50px;
@@ -84,21 +90,25 @@ body{
 	background-image: url("..//images//scrabble//star.png");
 }
 
+/*regular tile customization*/
 .tilePiece {
 	width: 50px;
 	height: 45px;
 }
 
+/*player's tile text customization*/
 #information {
 	text-align: center;
 	font-size: 40px;		
 }
 
+/*score board customization*/
 #scoreBoard {
 	text-align: center;
 	font-size: 40px;	
 }
 
+/*button customization*/
 button {
 	margin-left: 30px;
 	margin-right: -20px;
@@ -106,6 +116,7 @@ button {
 	padding: 15px;
 }
 
+/*remaining tile table customization*/
 #remainingTableDiv {
 	margin-top: 15px;
 	margin-left: 25px;
@@ -113,6 +124,7 @@ button {
 	font-size: 15px;
 }
 
+/*remaining tile table cells for each rows customization*/
 #remainingTableRow1 td {
 	 border: 1px solid black;
 	 padding: 5px;
@@ -131,6 +143,7 @@ button {
 	 text-align: center;
 }
 
+/*word currently played customization*/
 #wordOnBoard {
 	text-align: center;
 	font-size: 30px;

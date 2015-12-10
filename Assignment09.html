@@ -5,13 +5,15 @@
 		<meta charset=utf-8>
 		
 		<!--
-		91.461 Assignment: Using the jQuery UI Slider and Tab Widgets
-		Khyteang Lim, Student, UMass Lowell Computer Science, khy_lim@student.uml.edu
-		updated by KL on October 18, 2015 at 11:28 PM
-		updated by KL on November 05, 2015 at 10:15 AM
-		updated by KL on November 18, 2015 at 7:35 AM
-		This website allows user to dynamically generate a multiplication table.
-		In additional, there will be errors shown to users if the inputs are invalid.
+		91.461 Assignment 9: Implementing a Bit of Scrabble with Drag-and-Drop
+	    Khyteang Lim, Student, UMass Lowell Computer Science, khy_lim@student.uml.edu
+	    updated by KL on December 9, 2015 at 11:28 PM
+	     
+	    This is a game of scrabble.
+	    This is the html file for assignment09 (implementing a bit of Scrabble)
+
+		File: Assignment09.html
+		http://weblab.cs.uml.edu/~klim/Assignment09.html
 		-->
 		<!--link CSS file-->
 		<link rel="stylesheet" type="text/css" href="css/Assignment09.css">
@@ -44,21 +46,31 @@
 		<div id="content"></div>
 		<h1 id="titleHeading">Scrabble Game</h1>
 		
+		<!--Game Area including board and rack and score-->
 		<table id="gameArea">
 			<tr>
+			<!--Scrabble Board-->
 			<td id="scrabbleBoard">
-				
 			</td>
-			
+			<!--The rack which includes tiles, score, remaining tables and everything on the right side of the board-->
 			<td id="rackTiles">
+				<!--Information for player-->
 				<div id="information">Player's Tiles</div>
+				<!--Image for Rack-->
 				<img id="rack" alt="rack" src="images/scrabble/Scrabble_Rack_flat.resized.png" class='droppable'>
+				<!--Will hold the tiles-->
 				<div id="scrabbleTiles"></div>
+				<!--Display the word-->
 				<div id="wordOnBoard">Word: </div>
+				<!--Score Board-->
 				<div id="scoreBoard">Score: </div>
+				<!--Reset tile button to switch al 7 tiles-->
 				<button id="resetBtn">Reset Tiles</button>
+				<!--Submit word button to submit word on board-->
 				<button id="submitBtn">Submit Word</button>
+				<!--Reset Board button to reset the whole game-->
 				<button id="resetBoardBtn">Reset Board</button>
+				<!--Table containing the number of remaining tiles-->
 				<div id="remainingTableDiv">
 					<table id="remainingTileTable">
 					</table>
@@ -66,9 +78,6 @@
 			</td>
 			</tr> 
 		</table>
-		<!--<div id="draggable2" class="draggable ui-widget-content">
-			<p></p>
-		</div>-->
 		
 		<!-- css validation -->
 		<p style="position:absolute; margin-top: 5%;">

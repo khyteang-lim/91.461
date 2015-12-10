@@ -1,3 +1,15 @@
+/*
+	91.461 Assignment 9: Implementing a Bit of Scrabble with Drag-and-Drop
+    Khyteang Lim, Student, UMass Lowell Computer Science, khy_lim@student.uml.edu
+    updated by KL on December 9, 2015 at 11:28 PM
+     
+    This is a game of scrabble.
+    This is the javascript file for assignment 09 (implementing a bit of Scrabble)
+
+    File: Assignment09.js
+    http://weblab.cs.uml.edu/~klim/Assignment09.html
+*/
+
 $(document).ready(function() {
 
 	//number of tiles
@@ -22,14 +34,20 @@ $(document).ready(function() {
 	var playerHandTilesPosTop = {};
 	//stored player store
 	var storedScore = 0 ;
+	//mulitplier
 	var multiplier = 1;
+	//value of each word
 	var wordValue = 0 ;
+	//value of the word tiles
 	var wordTileValue = 0;
+	//Map of remaining tiles
 	var tileRemaining = {};
+	//a string that contains the word on the board
 	var wordOnBoard = "";
 
 	/*generate random tile*/
 	var getRandTile = function(){
+		//error check to see if there are any more tiles left
 		if ( letterTile.length == 0 ){
 			alert("error");
 		} else {	
@@ -85,6 +103,7 @@ $(document).ready(function() {
 		var rowGreaterThanSeven = false;
 
 		scrabbleBoard = "<table id=scrabbleBoardTable>";
+		//Creating each row
 		for ( var row = 0 ; row < 15 ; row++ ) {
 			scrabbleBoard += "<tr id=row" + row + ">";
 			for ( var col = 0 ; col < 15 ; col++ ) {
@@ -94,6 +113,7 @@ $(document).ready(function() {
 					rowTemp = row;
 					row = 14 - row;
 				}
+				//Creating each cell
 				switch(row) {
 					case 0:
 						switch(col) {
@@ -270,6 +290,7 @@ $(document).ready(function() {
 		var pos = $('#rack').position();
 		var leftPos, rightPos;
 
+		//creating each tiles
 		for ( var x = 0 ; x < playerHand.length ; x++ ) {
 
 			tileRemaining[playerHand[x]]--;
@@ -283,6 +304,7 @@ $(document).ready(function() {
 				
 			$('#scrabbleTiles').append(individualTiles);
 			$('#tile'+x).css("left", leftPos).css("top", topPos).css("position", "absolute");
+			//implementing draggable for each tile
 			$('#tile'+x).draggable({
 				appendTo: scrabbleBoardTable,
 				revert: 'invalid',
@@ -322,10 +344,12 @@ $(document).ready(function() {
 		
 	}
 
+	//return the amount of bonus to multiply the word with
 	var getTripleDoubleWord = function() {
 		return multiplier;
 	}
 
+	//set the amount of bonus to multiply the word with
 	var setTripleDoubleWord = function( multi ) {
 		multiplier = multi;
 	}
@@ -341,6 +365,7 @@ $(document).ready(function() {
 		var remainingTileTableRow2 = "<tr id='remainingTableRow2'>";
 		var remainingTileTableRow3 = "<tr id='remainingTableRow3'>";
 		
+		//putting each letter into array and set up remaining table
 		for (var i = 0; i < Object.keys( ScrabbleTiles ).length  + 1; i++){
 			
 			if ( i < Object.keys( ScrabbleTiles ).length - 1 ){
@@ -383,6 +408,7 @@ $(document).ready(function() {
 
 		var tile;
 	
+		//check for multiplier
 		if (tileValue === "doubleLetter"){
 			tile = 2;
 		} else if (tileValue === "tripleLetter"){
@@ -420,14 +446,11 @@ $(document).ready(function() {
 				wordTileValue += tileScore;
 			}
 			wordValue = wordTileValue * getTripleDoubleWord();
-			console.log("wordTileValue: " + wordTileValue);		
-			console.log("wordValue: " + wordValue);
 		} else {
-			console.log("nothing");
 		}
+		//update score
 		$('#scoreBoard').html("Score: " + (storedScore + wordValue));
 
-		//playerScore
 	}
 
 	/*event listener for the click on reset button to delete current tiles and get new one*/
@@ -485,6 +508,7 @@ $(document).ready(function() {
 		$('#wordOnBoard').html("Word: " + wordOnBoard);		
 	});
 
+	/*event listener for the click on reset board button to reset scrabble board and score*/
 	document.getElementById("resetBoardBtn").addEventListener("click", function(){
 		
 		wordOnBoard = "";
@@ -532,7 +556,9 @@ $(document).ready(function() {
 		$('#scoreBoard').html("Score: " + storedScore);
 	});
 
+	//set up each droppable
 	$(function() {
+		//set up the rack droppable
 		$('#rackTiles').droppable({
 			accept: ".ui-draggable",
 			appendTo: "body",
@@ -546,6 +572,7 @@ $(document).ready(function() {
 			}
 		});
 
+		//set up each scrabble board cell droppable
 		$('td table tbody tr td').droppable({
 			accept: ".ui-draggable",
 			appendTo: "body",
@@ -570,7 +597,8 @@ $(document).ready(function() {
 			}
 		});
 	});
-
+	
+	//START THE GAME!!
 	createScrabbleTable();
 	init();
 	newHand();
