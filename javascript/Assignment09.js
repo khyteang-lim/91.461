@@ -337,6 +337,9 @@ $(document).ready(function() {
 		var tile;
 		var remainingTileTable;
 		var numOfLetterRead = 0;
+		var remainingTileTableRow1 = "<tr id='remainingTableRow1'>";
+		var remainingTileTableRow2 = "<tr id='remainingTableRow2'>";
+		var remainingTileTableRow3 = "<tr id='remainingTableRow3'>";
 		
 		for (var i = 0; i < Object.keys( ScrabbleTiles ).length  + 1; i++){
 			
@@ -356,16 +359,21 @@ $(document).ready(function() {
 				var individualRowCol = "<td id='letter" + tileChar + "'>" + tileChar + ": " + ScrabbleTiles[tileChar]["original-distribution"] + "</td>";
 				tileRemaining[tileChar] = ScrabbleTiles[tileChar]["number-remaining"];
 				if ( numOfLetterRead < 9 ) {
-					$('#remainingTableRow1').append(individualRowCol);
+					remainingTileTableRow1+=individualRowCol;
 				} else if ( numOfLetterRead >= 9 && numOfLetterRead < 18 ) {
-					$('#remainingTableRow2').append(individualRowCol);
+					remainingTileTableRow2+=individualRowCol;
 				} else {
-					$('#remainingTableRow3').append(individualRowCol);
+					remainingTileTableRow3+=individualRowCol;
 				}
 			}
 			numOfLetterRead++;
 		}
-
+		remainingTileTableRow1 += "</tr>";
+		remainingTileTableRow2 += "</tr>";
+		remainingTileTableRow3 += "</tr>";
+		$('#remainingTileTable').append(remainingTileTableRow1);
+		$('#remainingTileTable').append(remainingTileTableRow2);
+		$('#remainingTileTable').append(remainingTileTableRow3);
 		$('#scoreBoard').html("Score: " + playerScore);
 		$('#wordOnBoard').html("Word: " + wordOnBoard);
 	}
@@ -493,8 +501,13 @@ $(document).ready(function() {
     	}
 		tileToStore.splice(0, tileToStore.length);
 
+		wordValue = 0;
+		wordTileValue = 0;
+		storedScore = 0;
+		deleteHand();
+		letterTile.splice(0, letterTile.length);
+		numTiles = 0;
 		for (var i = 0; i < Object.keys( ScrabbleTiles ).length  + 1; i++){
-			console.log("Here");
 			if ( i < Object.keys( ScrabbleTiles ).length - 1 ){
 				tileChar = String.fromCharCode( 65 + i );
 				letterTable[tileChar] = ScrabbleTiles[tileChar].value;
@@ -512,11 +525,7 @@ $(document).ready(function() {
 			}
 			$('#letter'+tileChar).html(tileChar + ": " + tileRemaining[tileChar]);
 		}
-
-		wordValue = 0;
-		wordTileValue = 0;
-		storedScore = 0;
-		deleteHand();
+		console.log("LetterTile " + letterTile.length);
     	newHand();
 		createTiles();
 		setTripleDoubleWord(1);
