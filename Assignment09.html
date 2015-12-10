@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<!--head starts here-->
+	<head>
+		<meta charset=utf-8>
+		
+		<!--
+		91.461 Assignment: Using the jQuery UI Slider and Tab Widgets
+		Khyteang Lim, Student, UMass Lowell Computer Science, khy_lim@student.uml.edu
+		updated by KL on October 18, 2015 at 11:28 PM
+		updated by KL on November 05, 2015 at 10:15 AM
+		updated by KL on November 18, 2015 at 7:35 AM
+		This website allows user to dynamically generate a multiplication table.
+		In additional, there will be errors shown to users if the inputs are invalid.
+		-->
+		<!--link CSS file-->
+		<link rel="stylesheet" type="text/css" href="css/Assignment09.css">
+		<link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet" type="text/css">
+		<!--
+		load jQuery library from the Google Content Delivery Network (CDN)
+		or load local copy of jQuery library
+		-->
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script>if (!window.jQuery) { document.write('<script src="javascript/jquery.min.js"><\/script>'); }
+		</script>
+		<!--load jquery.validate.min.js-->
+		<script src="javascript/jquery.validate.min.js"></script>
+		<!--load jquery.ui.min.js-->
+		<link rel="stylesheet" href="css/jquery-ui.min.css">
+		<script src="javascript/jquery-ui.min.js"></script>
+		<!--load custom javascript main.js-->
+		<script src="javascript/Assignment09.js"></script>
+		<!-- json created by Prof. Jesse Heines -->
+		<!-- read associative array containing Scrabble pieces -->
+		<script src="javascript/Scrabble_Pieces_AssociativeArray_Jesse.js"></script>
+		<!-- page title -->
+		<title>Assignment 09</title>
+		
+	</head>
+	
+	<!--body starts here-->
+	<body>
+		<!-- dynamic content -->
+		<div id="content"></div>
+		<h1 id="titleHeading">Scrabble Game</h1>
+		
+		<table id="gameArea">
+			<tr>
+			<td id="scrabbleBoard">
+				
+			</td>
+			
+			<td id="rackTiles">
+				<div id="information">Player's Tiles</div>
+				<img id="rack" src="images/scrabble/Scrabble_Rack_flat.resized.png" class='droppable'>
+				<div id="scrabbleTiles"></div>
+				<div id="wordOnBoard">Word: </div>
+				<div id="scoreBoard">Score: </div>
+				<button id="resetBtn">Reset Tiles</button>
+				<button id="submitBtn">Submit Word</button>
+				<button id="resetBoardBtn">Reset Board</button>
+				<div id="remainingTableDiv">
+					<table id="remainingTileTable">
+						<tr id="remainingTableRow1"></tr>
+						<tr id="remainingTableRow2"></tr>
+						<tr id="remainingTableRow3"></tr>
+					</table>
+				</div>
+			</td>
+			</tr> 
+		</table>
+		<!--<div id="draggable2" class="draggable ui-widget-content">
+			<p></p>
+		</div>-->
+		
+		<!-- css validation -->
+		<p style="position:absolute; margin-top: 5%;">
+			<a href="http://jigsaw.w3.org/css-validator/check/referer">
+				<img style="border:0;width:88px;height:31px"
+				src="http://jigsaw.w3.org/css-validator/images/vcss-blue"
+				alt="Valid CSS!" />
+			</a>
+		</p>
+	</body>
+</html>
