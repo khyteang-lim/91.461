@@ -1,0 +1,137 @@
+/*
+	91.461 Assignment: Using the jQuery UI Slider and Tab Widgets
+    Khyteang Lim, Student, UMass Lowell Computer Science, khy_lim@student.uml.edu
+    updated by KL on October 18, 2015 at 11:28 PM
+    updated by KL on November 05, 2015 at 10:28 PM
+    updated by KL on November 18, 2015 at 7:28 PM
+     
+    This website allows user to dynamically generate a multiplication table.
+    In additional, there will be errors shown to users if the inputs are invalid.
+*/
+
+/*body customization*/
+body{
+	color: black;
+	background-color: white;
+	background-image: url("..//images//assignment09background.jpg");
+	background-repeat: no-repeat;
+	background-size: 100%;
+	margin-left: 70px;	
+}
+
+/*title customization*/
+.titleHeading{
+	font-size: 50px;
+	text-align: center;
+}
+
+/*scrabble board*/
+.gameArea {
+	float: left;
+	clear: both;
+}
+
+.scrabbleBoard {
+	background-color: rgb(0,0,0);
+    position: absolute;
+}
+
+.rackTiles {
+    position: absolute;
+}
+
+.draggable { width: 50px; height: 50px; left: auto; top: auto; position: relative;}
+.ui-widget-header p, .ui-widget-content p { margin: 0; }
+
+.tripleWord {
+	width: 50px;
+	height: 50px;
+	background-image: url("..//images//scrabble//triple_word.png");
+	z-index: 3;
+}
+
+.tripleLetter {
+	width: 50px;
+	height: 50px;
+	background-image: url("..//images//scrabble//triple_letter.png");
+	z-index: 3;
+}
+
+.doubleWord {
+	width: 50px;
+	height: 50px;
+	background-image: url("..//images//scrabble//double_word.png");
+	z-index: 3;
+}
+
+.doubleLetter {
+	width: 50px;
+	height: 50px;
+	background-image: url("..//images//scrabble//double_letter.png");
+	z-index: 3;
+}
+
+.normalTile {
+	width: 50px;
+	height: 50px;
+	background-color: rgb(236,184,81);
+	z-index: 3;
+}
+
+.middleStarTile {
+	width: 50px;
+	height: 50px;
+	background-image: url("..//images//scrabble//star.png");
+}
+
+.tilePiece {
+	width: 50px;
+	height: 45px;
+}
+
+#information {
+	text-align: center;
+	font-size: 40px;		
+}
+
+#scoreBoard {
+	text-align: center;
+	font-size: 40px;	
+}
+
+button {
+	margin-left: 30px;
+	margin-right: -20px;
+	margin-top: 10px;
+	padding: 15px;
+}
+
+#remainingTableDiv {
+	margin-top: 15px;
+	margin-left: 25px;
+	text-align: center;
+	font-size: 15px;
+}
+
+#remainingTableRow1 td {
+	 border: 1px solid black;
+	 padding: 5px;
+	 text-align: center;
+}
+
+#remainingTableRow2 td {
+	 border: 1px solid black;
+	 padding: 5px;
+	 text-align: center;
+}
+
+#remainingTableRow3 td {
+	 border: 1px solid black;
+	 padding: 5px;
+	 text-align: center;
+}
+
+#wordOnBoard {
+	text-align: center;
+	font-size: 30px;
+}
